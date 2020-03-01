@@ -9,7 +9,7 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.rmi.Remote;
 
 public class BasicNavigation {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         //to start selenium script we need;
         //setup webdriver (browser driver ) and create webdriver object
 
@@ -24,5 +24,16 @@ public class BasicNavigation {
         */
 
        driver.get("http://google.com");// to open a website
+        Thread.sleep(3000);// for demo, wait 3 seconds
+        String expectedTitle="Google";
+        String title = driver.getTitle();
+        System.out.println("title = " + title);
+        if (expectedTitle.equals(title)){
+            System.out.println("Test Passed");
+        }else{
+            System.out.println("Test Failed");
+        }
+
+        driver.close();
     }
 }
